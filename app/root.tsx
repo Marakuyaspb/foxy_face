@@ -5,6 +5,10 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+
+import Header from "./routes/components/Header"; 
+import Footer from "./routes/components/Footer";
+
 import "./tailwind.css";
 import "./style.css";
 
@@ -19,7 +23,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <Header />
         {children}
+        <Footer />
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -28,5 +34,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <Layout>
+      <Outlet />
+    </Layout>
+  );
 }
