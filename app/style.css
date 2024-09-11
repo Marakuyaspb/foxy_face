@@ -49,7 +49,24 @@ label{
 
 
 .bridge{
+	/*background: radial-gradient(circle at 10% 20%, rgba(255, 200, 124, .1) 0%, rgba(252, 251, 121, .1) 90%)*/;
+	border-radius: 10px;
+	box-shadow: 1px 4px 4px 1px rgba(0,0,0,0.2);
+	padding: 1em ;
 	max-width: 20em;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 3em auto;
+
+}
+
+.variant_bg{
+	background-color: #f7fbfd;
+	/*background: radial-gradient(circle at 10% 20%, rgba(255, 200, 124, .2) 0%, rgba(252, 251, 121, .2) 90%); */
+	border: 1px #f1f5f7 solid;
+	border-radius: 8px;
+	padding: .5em .8em .8em .8em;
+}
+
+
+.change_icon{
+	margin: .5em auto;
 }
