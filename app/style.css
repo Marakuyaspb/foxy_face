@@ -78,11 +78,62 @@ footer{
 
 
 .btn_swap{
-	background: linear-gradient(111.5deg, rgb(228, 247, 255) 21.9%, rgb(255, 216, 194) 92.2%);
+	background: rgb(255, 216, 194);
 	/*border: 1px #f1f5f7 solid;*/
 	border-radius: 8px;
 	box-shadow: 1px 3px 3px 1px rgba(0,0,0,0.1);
 	min-width: 7em;
 	margin: 1em auto .5em auto!important;
 	padding: .3em .8em;
+}
+
+
+
+/*  MODAL WINDOW  */
+
+.modal_full{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(111, 86, 65, 0.5)!important;
+}
+
+.modal_container{
+	border-radius: 10px;
+	margin: 10%;
+	height: 60%;
+	background: rgb(255, 238, 229);
+}
+
+#w {
+	display: none;
+}
+
+#w.block {
+	display: block; 
+}
+
+
+.close {
+  color: #333333;
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  font-size: 60px;
+  font-weight: 100;
+  transition: 0.3s;
+  z-index: 2;
+}
+
+.hide {
+	display: none;
+}
+
+.block {
+	display: block;  
 }
