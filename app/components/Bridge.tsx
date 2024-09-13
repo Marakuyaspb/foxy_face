@@ -58,7 +58,7 @@ const Bridge: React.FC = () => {
 
 
     return (
-        <div className='bridge'>
+      <div className='bridge'>
         <h1 className="text-xl pb-4">Bridge & Swap</h1>
 
         {isSwitched ? (

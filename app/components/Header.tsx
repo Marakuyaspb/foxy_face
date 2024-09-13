@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import { Web3ReactProvider } from '@web3-react/core';
-import { ethers } from 'ethers';
-
-
+import WalletConnect from "./WalletConnect"; 
 
 const Header= () => {
    const [isVisible, setIsVisible] = useState(false);
@@ -35,7 +32,9 @@ const Header= () => {
          <div id='w' className={`modal_full ${isVisible ? 'block' : ''}`}>
             <div className='p-4 modal_container'>
                <span id='hide' class='close' onClick={hideDiv}>&times;</span>
-               <h2>Connect Your Wallet</h2>
+               <center><h2 className='we_200'>Connect Your Wallet</h2></center>
+
+               <WalletConnect />
             </div>
          </div>
 

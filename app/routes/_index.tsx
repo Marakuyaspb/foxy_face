@@ -7,15 +7,15 @@ import Bridge from '../components/Bridge';
 
 const Index = () => {
     return (
-            <div className='wrap'>
+        <div className='wrap'>
             <Header />
 
-            <div className='p-4'>
+            <div className='px-4'>
                 <Bridge />      
             </div> 
             
             <Footer />
-            </div> 
+        </div> 
     );
 };
 

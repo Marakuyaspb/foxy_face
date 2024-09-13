@@ -13,6 +13,9 @@ label{
 .we_100 {
   font-weight: 100;
 }
+.we_200 {
+  font-weight: 100;
+}
 .we_300 {
 	font-weight: 300;
 }
@@ -107,7 +110,7 @@ footer{
 	border-radius: 10px;
 	margin: 10%;
 	height: 60%;
-	background: rgb(255, 238, 229);
+	background: #fbfbfb;
 }
 
 #w {
@@ -136,4 +139,19 @@ footer{
 
 .block {
 	display: block;  
+}
+
+
+.w_container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card{
+	height: 5em;
+	padding: .5em .1em;
 }
