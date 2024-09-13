@@ -435,8 +435,12 @@ const Bridge: React.FC = () => {
             </div>
 
             </>
+        )}  
 
-        )}    
+        <center>
+          <button className='btn_swap'>Swap it</button>
+        </center>
+
       </div>
     );
 };

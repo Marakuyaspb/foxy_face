@@ -74,3 +74,15 @@ footer{
 .change_icon{
 	margin: .5em auto;
 }
+
+
+
+.btn_swap{
+	background: linear-gradient(111.5deg, rgb(228, 247, 255) 21.9%, rgb(255, 216, 194) 92.2%);
+	/*border: 1px #f1f5f7 solid;*/
+	border-radius: 8px;
+	box-shadow: 1px 3px 3px 1px rgba(0,0,0,0.1);
+	min-width: 7em;
+	margin: 1em auto .5em auto!important;
+	padding: .3em .8em;
+}

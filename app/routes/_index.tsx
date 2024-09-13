@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Bridge from './components/Bridge';
+import Header from "../components/Header"; 
+import Footer from "../components/Footer";
+import Bridge from '../components/Bridge';
 
 
 const Index = () => {
     return (
-        <div className='p-4'>
-            <Bridge />
-        </div>
+            <div className='wrap'>
+            <Header />
+
+            <div className='p-4'>
+                <Bridge />      
+            </div> 
+            
+            <Footer />
+            </div> 
     );
 };
 
