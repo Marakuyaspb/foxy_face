@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
-import WalletConnect from "./WalletConnect"; 
+import ReactDOM from 'react-dom';
+import { Web3ReactProvider } from '@web3-react/core';
+import WalletConnectComponent from './WalletConnect';
+import { ethers } from 'ethers';
+
+function getLibrary(provider: any) {
+  return new ethers.providers.Web3Provider(provider);
+}
 
 const Header= () => {
    const [isVisible, setIsVisible] = useState(false);
@@ -15,15 +22,15 @@ const Header= () => {
       <header>
 
          <div className="wrap">
-            <div className="p-4 d-flex justify-content-between">
+            <div className="px-4 py-3 d-flex justify-content-between">
 
                <div>
                   <h1 className="text-3xl">MadFox Bridge</h1>
-                  <p className="pb-4">Smart way of token routing</p>
+                  <p className="we_300">Smart way of token routing</p>
                </div>
 
                <div>
-                  <button id='show' className='btn_swap' onClick={showDiv}>Connect wallet</button>
+                  <button id='show' className='we_300 btn_swap' onClick={showDiv}>Connect wallet</button>
                </div>
             </div>
          </div>
@@ -31,10 +38,13 @@ const Header= () => {
 
          <div id='w' className={`modal_full ${isVisible ? 'block' : ''}`}>
             <div className='p-4 modal_container'>
-               <span id='hide' class='close' onClick={hideDiv}>&times;</span>
-               <center><h2 className='we_200'>Connect Your Wallet</h2></center>
+               <span id='hide' className='close' onClick={hideDiv}>&times;</span>
+               <center><h2 className='we_300'>Connect Your Wallet</h2></center>
 
-               <WalletConnect />
+                <Web3ReactProvider getLibrary={getLibrary}>
+                  <WalletConnectComponent />
+                </Web3ReactProvider>
+                
             </div>
          </div>
 

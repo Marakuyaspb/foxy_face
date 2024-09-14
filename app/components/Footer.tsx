@@ -3,7 +3,9 @@ import React from 'react';
 const Footer: React.FC = () => {
     return (
         <footer>
-            <p className="p-3 text-base sm:text-sm">© 2024, MadFox. All rights reserved.</p>
+            <div className='p-4'>
+                <p className="we_200">© 2024, MadFox. All rights reserved.</p>
+            </div>
         </footer>
     );
 };

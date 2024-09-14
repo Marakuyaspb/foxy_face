@@ -5,11 +5,24 @@ body{
 	font-weight: 300;
 	font-style: normal;
 	font-size: 1em;
+	background-color: #fbfbfb;
+}
+
+header{
+	/*background-color: #fbfbfb;*/
+}
+
+footer{
+	background-color: #333;
+	color: #fff;
 }
 
 label{
 	font-size: 1.1em;
 }
+
+
+
 .we_100 {
   font-weight: 100;
 }
@@ -32,10 +45,11 @@ label{
   font-style: italic;
 }
 
-footer{
-	background-color: #333;
-	color: #fff;
+.op_50{
+	opacity: .5;
 }
+
+
 
 
 /* COLORS */
@@ -55,6 +69,78 @@ footer{
 }
 
 
+/*  DESCTOP  */
+@media (min-width: 811px) {
+
+	.modal_container{
+		background: #fbfbfb;
+		border-radius: 10px;
+		margin: 10% auto;
+		max-width: 40em;
+	}
+	.w_container {
+	  display: grid;
+	  grid-gap: 10px;
+	  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+	  width: 90%;
+	  margin-left: auto;
+	  margin-right: auto;
+	}
+
+	.card{
+		height: 5em;
+		padding: .5em .1em;
+	}
+
+	.close {
+	  color: #333333;
+	  position: absolute;
+	  top: 45px;
+	  right: 35px;
+	  font-size: 60px;
+	  font-weight: 100;
+	  transition: 0.3s;
+	  z-index: 2;
+	}
+
+}
+
+
+/*  PHONE  */
+@media (max-width: 810px) {
+
+	.modal_container{
+		border-radius: 10px;
+		margin: 10% 1%;
+		background: #fbfbfb;
+	}
+
+	.w_container {
+	  display: grid;
+	  grid-gap: 10px;
+	  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+	  width: 100%;
+	  margin-left: auto;
+	  margin-right: auto;
+	}
+
+	.card{
+		height: 5em;
+		padding: .5em .1em;
+	}
+
+	.close {
+	  color: rgba(111, 86, 65, 0.5);
+	  position: absolute;
+	  top: 20px;
+	  right: 20px;
+	  font-size: 60px;
+	  font-weight: 100;
+	  transition: 0.3s;
+	  z-index: 2;
+	}
+
+}
 
 .bridge{
 	border-radius: 10px;
@@ -106,12 +192,7 @@ footer{
   background-color: rgba(111, 86, 65, 0.5)!important;
 }
 
-.modal_container{
-	border-radius: 10px;
-	margin: 10%;
-	height: 60%;
-	background: #fbfbfb;
-}
+
 
 #w {
 	display: none;
@@ -122,16 +203,7 @@ footer{
 }
 
 
-.close {
-  color: #333333;
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  font-size: 60px;
-  font-weight: 100;
-  transition: 0.3s;
-  z-index: 2;
-}
+
 
 .hide {
 	display: none;
@@ -142,16 +214,3 @@ footer{
 }
 
 
-.w_container {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  width: 40%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.card{
-	height: 5em;
-	padding: .5em .1em;
-}
