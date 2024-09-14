@@ -110,46 +110,71 @@ const Bridge: React.FC = () => {
                 
 
                 {/* TOKEN 1*/}
-                  <Listbox value={selectedToken1} onChange={setSelectedToken1}>
-                    <div className="relative mt-2">
-                      <ListboxButton className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
-                        <span className="flex items-center">
-                          <span className="svg-icon" 
-                        dangerouslySetInnerHTML={{ __html: selectedToken1.avatar }} 
-                      />
-                          <span className="ml-3 block truncate">{selectedToken1.token}</span>
-                        </span>
-                        <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                          <ChevronUpDownIcon aria-hidden="true" className="h-5 w-5 text-gray-400" />
-                        </span>
-                      </ListboxButton>
-
-                      <ListboxOptions
-                        transition
-                        className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in sm:text-sm"
-                      >
-                        {tokens.map((token) => (
-                          <ListboxOption
-                            key={token.id}
-                            value={token}
-                            className="group relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
-                          >
-                            <div className="flex items-center">
-                              <span className="svg-icon"        dangerouslySetInnerHTML={{ __html: token.avatar }} />
-                              <span className="ml-3 block truncate font-normal group-data-[selectedToken1]:font-semibold">
-                                {token.token}
-                              </span>
-                            </div>
-
-                            <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600 group-data-[focus]:text-white [.group:not([data-selectedToken1])_&]:hidden">
-                              <CheckIcon aria-hidden="true" className="h-5 w-5" />
+                  <div className="row">
+                    
+                    <div className="col-sm-6">
+                      <Listbox value={selectedToken1} onChange={setSelectedToken1}>
+                        <div className="relative mt-2">
+                          <ListboxButton className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
+                            <span className="flex items-center">
+                              <span className="svg-icon" 
+                            dangerouslySetInnerHTML={{ __html: selectedToken1.avatar }} 
+                          />
+                              <span className="ml-3 block truncate">{selectedToken1.token}</span>
                             </span>
-                          </ListboxOption>
-                        ))}
-                      </ListboxOptions>
-                    </div>
-                  </Listbox>
+                            <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
+                              <ChevronUpDownIcon aria-hidden="true" className="h-5 w-5 text-gray-400" />
+                            </span>
+                          </ListboxButton>
 
+                          <ListboxOptions
+                            transition
+                            className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in sm:text-sm"
+                          >
+                            {tokens.map((token) => (
+                              <ListboxOption
+                                key={token.id}
+                                value={token}
+                                className="group relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+                              >
+                                <div className="flex items-center">
+                                  <span className="svg-icon" dangerouslySetInnerHTML={{ __html: token.avatar }} />
+                                  <span className="ml-3 block truncate font-normal group-data-[selectedToken1]:font-semibold">
+                                    {token.token}
+                                  </span>
+                                </div>
+
+                                <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600 group-data-[focus]:text-white [.group:not([data-selectedToken1])_&]:hidden">
+                                  <CheckIcon aria-hidden="true" className="h-5 w-5" />
+                                </span>
+                              </ListboxOption>
+                            ))}
+                          </ListboxOptions>
+                        </div>
+
+                        <label htmlFor="price" className="we_200 block text-sm font-medium text-gray-900">
+                          {selectedToken1 ? `~ 0.1 ${selectedToken1.token}` : "Select a token"}
+                        </label>
+                      </Listbox>
+                    </div>
+
+                    <div className="col-sm-6">
+                      <div className="relative mt-2 rounded-md">
+                          <div className="pointer-events-none absolute inset-y-0 left-1 flex items-center pl-3">
+                          </div>
+                          <input
+                            id="price"
+                            name="price"
+                            type="text"
+                            placeholder="0.00"
+                            className="block w-full rounded-md how_much ps-2  text-gray-900 placeholder:text-gray-500 "
+                          />
+                      </div>
+                      <label htmlFor="price" className="we_200 block text-sm font-medium text-gray-900">
+                          ~ 10 USD
+                      </label>
+                    </div>
+                  </div>
             </div>
 
             {/* THE REPLACE ARROWS */}
@@ -204,46 +229,73 @@ const Bridge: React.FC = () => {
 
 
                 {/* TOKEN 2 */}
-                    <Listbox value={selectedToken2} onChange={setSelectedToken2}>
-                      <div className="relative mt-2">
-                        <ListboxButton className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
-                          <span className="flex items-center">
-                            <span className="svg-icon" 
-                          dangerouslySetInnerHTML={{ __html: selectedToken2.avatar }} 
-                        />
-                            <span className="ml-3 block truncate">{selectedToken2.token}</span>
-                          </span>
-                          <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                            <ChevronUpDownIcon aria-hidden="true" className="h-5 w-5 text-gray-400" />
-                          </span>
-                        </ListboxButton>
+                  <div className="row">
+                    <div className="col-sm-6">
+                      <Listbox value={selectedToken2} onChange={setSelectedToken2}>
+                        <div className="relative mt-2">
+                          <ListboxButton className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
+                            <span className="flex items-center">
+                              <span className="svg-icon" 
+                            dangerouslySetInnerHTML={{ __html: selectedToken2.avatar }} 
+                          />
+                              <span className="ml-3 block truncate">{selectedToken2.token}</span>
+                            </span>
+                            <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
+                              <ChevronUpDownIcon aria-hidden="true" className="h-5 w-5 text-gray-400" />
+                            </span>
+                          </ListboxButton>
 
-                        <ListboxOptions
-                          transition
-                          className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in sm:text-sm"
-                        >
-                          {tokens.map((token) => (
-                            <ListboxOption
-                              key={token.id}
-                              value={token}
-                              className="group relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
-                            >
-                              <div className="flex items-center">
-                                <span className="svg-icon"        dangerouslySetInnerHTML={{ __html: token.avatar }} />
-                                <span className="ml-3 block truncate font-normal group-data-[selectedToken2]:font-semibold">
-                                  {token.token}
+                          <ListboxOptions
+                            transition
+                            className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in sm:text-sm"
+                          >
+                            {tokens.map((token) => (
+                              <ListboxOption
+                                key={token.id}
+                                value={token}
+                                className="group relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+                              >
+                                <div className="flex items-center">
+                                  <span className="svg-icon"        dangerouslySetInnerHTML={{ __html: token.avatar }} />
+                                  <span className="ml-3 block truncate font-normal group-data-[selectedToken2]:font-semibold">
+                                    {token.token}
+                                  </span>
+                                </div>
+
+                                <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600 group-data-[focus]:text-white [.group:not([data-selectedToken2])_&]:hidden">
+                                  <CheckIcon aria-hidden="true" className="h-5 w-5" />
                                 </span>
-                              </div>
+                              </ListboxOption>
+                            ))}
+                          </ListboxOptions>
 
-                              <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600 group-data-[focus]:text-white [.group:not([data-selectedToken2])_&]:hidden">
-                                <CheckIcon aria-hidden="true" className="h-5 w-5" />
-                              </span>
-                            </ListboxOption>
-                          ))}
-                        </ListboxOptions>
+                        </div>
+                        <label htmlFor="price" className="we_200 block text-sm font-medium text-gray-900">
+                          {selectedToken2 ? `~ 0.1 ${selectedToken2.token}` : "Select a token"}
+                        </label>
+                      </Listbox>
+                    </div>
 
+                    <div className="col-sm-6">
+                        
+                      <div className="relative mt-2 rounded-md">
+                          <div className="pointer-events-none absolute inset-y-0 left-1 flex items-center pl-3">
+
+                          </div>
+                          <input
+                            id="price"
+                            name="price"
+                            type="text"
+                            placeholder="0.00"
+                            className="block w-full rounded-md how_much ps-2  text-gray-900 placeholder:text-gray-500 "
+                          />
+                      
+                        <label htmlFor="price" className="we_200 block text-sm font-medium text-gray-900">
+                          ~ 10 USD
+                        </label>
                       </div>
-                    </Listbox>
+                    </div>
+                  </div>
 
             </div>
             </> 
@@ -255,7 +307,7 @@ const Bridge: React.FC = () => {
             <div className='variant_bg' id="to">
 
                 {/* CHAIN 2*/}
-                  <Listbox value={selectedChain2} onChange={setSelectedChain2}>
+                <Listbox value={selectedChain2} onChange={setSelectedChain2}>
                   <Label className="block text-sm font-medium leading-6 text-gray-900">From</Label>
                     <div className="relative mt-2">
                       <ListboxButton className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
@@ -294,51 +346,74 @@ const Bridge: React.FC = () => {
                         ))}
                       </ListboxOptions>
                     </div>
-                  </Listbox>
+                </Listbox>
 
 
                 {/* TOKEN 2 */}
-                    <Listbox value={selectedToken2} onChange={setSelectedToken2}>
-                      <div className="relative mt-2">
-                        <ListboxButton className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
-                          <span className="flex items-center">
-                            <span className="svg-icon" 
-                          dangerouslySetInnerHTML={{ __html: selectedToken2.avatar }} 
-                        />
-                            <span className="ml-3 block truncate">{selectedToken2.token}</span>
-                          </span>
-                          <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                            <ChevronUpDownIcon aria-hidden="true" className="h-5 w-5 text-gray-400" />
-                          </span>
-                        </ListboxButton>
+                <div className="row">
+                    <div className="col-sm-6">
+                      <Listbox value={selectedToken2} onChange={setSelectedToken2}>
+                        <div className="relative mt-2">
+                          <ListboxButton className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
+                            <span className="flex items-center">
+                              <span className="svg-icon" 
+                            dangerouslySetInnerHTML={{ __html: selectedToken2.avatar }} 
+                          />
+                              <span className="ml-3 block truncate">{selectedToken2.token}</span>
+                            </span>
+                            <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
+                              <ChevronUpDownIcon aria-hidden="true" className="h-5 w-5 text-gray-400" />
+                            </span>
+                          </ListboxButton>
 
-                        <ListboxOptions
-                          transition
-                          className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in sm:text-sm"
-                        >
-                          {tokens.map((token) => (
-                            <ListboxOption
-                              key={token.id}
-                              value={token}
-                              className="group relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
-                            >
-                              <div className="flex items-center">
-                                <span className="svg-icon"        dangerouslySetInnerHTML={{ __html: token.avatar }} />
-                                <span className="ml-3 block truncate font-normal group-data-[selectedToken2]:font-semibold">
-                                  {token.token}
+                          <ListboxOptions
+                            transition
+                            className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in sm:text-sm"
+                          >
+                            {tokens.map((token) => (
+                              <ListboxOption
+                                key={token.id}
+                                value={token}
+                                className="group relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+                              >
+                                <div className="flex items-center">
+                                  <span className="svg-icon"        dangerouslySetInnerHTML={{ __html: token.avatar }} />
+                                  <span className="ml-3 block truncate font-normal group-data-[selectedToken2]:font-semibold">
+                                    {token.token}
+                                  </span>
+                                </div>
+
+                                <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600 group-data-[focus]:text-white [.group:not([data-selectedToken2])_&]:hidden">
+                                  <CheckIcon aria-hidden="true" className="h-5 w-5" />
                                 </span>
-                              </div>
+                              </ListboxOption>
+                            ))}
+                          </ListboxOptions>
 
-                              <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600 group-data-[focus]:text-white [.group:not([data-selectedToken2])_&]:hidden">
-                                <CheckIcon aria-hidden="true" className="h-5 w-5" />
-                              </span>
-                            </ListboxOption>
-                          ))}
-                        </ListboxOptions>
+                        </div>
 
+                        <label htmlFor="price" className="we_200 block text-sm font-medium text-gray-900">
+                              {selectedToken2 ? `~ 0.1 ${selectedToken2.token}` : "Select a token"}
+                            </label>
+                      </Listbox>
+                    </div>
+                    <div className="col-sm-6">    
+                      <div className="relative mt-2 rounded-md">
+                        <div className="pointer-events-none absolute inset-y-0 left-1 flex items-center pl-3">
+                        </div>
+                        <input
+                          id="price"
+                          name="price"
+                          type="text"
+                          placeholder="0.00"
+                          className="block w-full rounded-md how_much ps-2  text-gray-900 placeholder:text-gray-500 "
+                        />
                       </div>
-                    </Listbox>
-
+                        <label htmlFor="price" className="we_200 block text-sm font-medium text-gray-900">
+                          ~ 10 USD
+                        </label>
+                    </div>
+                  </div>
             </div>
 
             {/* THE REPLACE ARROWS */}
@@ -349,7 +424,7 @@ const Bridge: React.FC = () => {
             <div className='variant_bg' id="from">
 
                 {/* CHAIN 1 */}
-                  <Listbox value={selectedChain1} onChange={setSelectedChain1}>
+                <Listbox value={selectedChain1} onChange={setSelectedChain1}>
                   <Label className="block text-sm font-medium leading-6 text-gray-900">To</Label>
                     <div className="relative mt-2">
                       <ListboxButton className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
@@ -388,49 +463,73 @@ const Bridge: React.FC = () => {
                         ))}
                       </ListboxOptions>
                     </div>
-                  </Listbox>
+                </Listbox>
                 
 
                 {/* TOKEN 1*/}
-                  <Listbox value={selectedToken1} onChange={setSelectedToken1}>
-                    <div className="relative mt-2">
-                      <ListboxButton className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
-                        <span className="flex items-center">
-                          <span className="svg-icon" 
-                        dangerouslySetInnerHTML={{ __html: selectedToken1.avatar }} 
-                      />
-                          <span className="ml-3 block truncate">{selectedToken1.token}</span>
-                        </span>
-                        <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                          <ChevronUpDownIcon aria-hidden="true" className="h-5 w-5 text-gray-400" />
-                        </span>
-                      </ListboxButton>
-
-                      <ListboxOptions
-                        transition
-                        className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in sm:text-sm"
-                      >
-                        {tokens.map((token) => (
-                          <ListboxOption
-                            key={token.id}
-                            value={token}
-                            className="group relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
-                          >
-                            <div className="flex items-center">
-                              <span className="svg-icon"        dangerouslySetInnerHTML={{ __html: token.avatar }} />
-                              <span className="ml-3 block truncate font-normal group-data-[selectedToken1]:font-semibold">
-                                {token.token}
-                              </span>
-                            </div>
-
-                            <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600 group-data-[focus]:text-white [.group:not([data-selectedToken1])_&]:hidden">
-                              <CheckIcon aria-hidden="true" className="h-5 w-5" />
+                <div className="row">
+                    <div className="col-sm-6">
+                      <Listbox value={selectedToken1} onChange={setSelectedToken1}>
+                        <div className="relative mt-2">
+                          <ListboxButton className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6">
+                            <span className="flex items-center">
+                              <span className="svg-icon" 
+                            dangerouslySetInnerHTML={{ __html: selectedToken1.avatar }} 
+                          />
+                              <span className="ml-3 block truncate">{selectedToken1.token}</span>
                             </span>
-                          </ListboxOption>
-                        ))}
-                      </ListboxOptions>
+                            <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
+                              <ChevronUpDownIcon aria-hidden="true" className="h-5 w-5 text-gray-400" />
+                            </span>
+                          </ListboxButton>
+
+                          <ListboxOptions
+                            transition
+                            className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none data-[closed]:data-[leave]:opacity-0 data-[leave]:transition data-[leave]:duration-100 data-[leave]:ease-in sm:text-sm"
+                          >
+                            {tokens.map((token) => (
+                              <ListboxOption
+                                key={token.id}
+                                value={token}
+                                className="group relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 data-[focus]:bg-indigo-600 data-[focus]:text-white"
+                              >
+                                <div className="flex items-center">
+                                  <span className="svg-icon"        dangerouslySetInnerHTML={{ __html: token.avatar }} />
+                                  <span className="ml-3 block truncate font-normal group-data-[selectedToken1]:font-semibold">
+                                    {token.token}
+                                  </span>
+                                </div>
+
+                                <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-indigo-600 group-data-[focus]:text-white [.group:not([data-selectedToken1])_&]:hidden">
+                                  <CheckIcon aria-hidden="true" className="h-5 w-5" />
+                                </span>
+                              </ListboxOption>
+                            ))}
+                          </ListboxOptions>
+                        </div>
+
+                        <label htmlFor="price" className="we_200 block text-sm font-medium text-gray-900">
+                              {selectedToken1 ? `~ 0.1 ${selectedToken1.token}` : "Select a token"}
+                            </label>
+                      </Listbox>
                     </div>
-                  </Listbox>
+                    <div className="col-sm-6">   
+                      <div className="relative mt-2 rounded-md">
+                          <div className="pointer-events-none absolute inset-y-0 left-1 flex items-center pl-3">
+                          </div>
+                          <input
+                            id="price"
+                            name="price"
+                            type="text"
+                            placeholder="0.00"
+                            className="block w-full rounded-md how_much ps-2  text-gray-900 placeholder:text-gray-500 "
+                          />
+                      </div>
+                      <label htmlFor="price" className="we_200 block text-sm font-medium text-gray-900">
+                          ~ 10 USD
+                      </label>
+                    </div>
+                </div>
 
             </div>
 

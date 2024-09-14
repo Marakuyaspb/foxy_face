@@ -214,3 +214,10 @@ label{
 }
 
 
+.how_much{
+	box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+	font-size: 0.875rem;
+	line-height: 1.5rem;
+	padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+}
