@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer: React.FC = () => {
     return (
-        <footer>
+        <footer className='fixed-bottom'>
             <div className='p-4'>
                 <p className="we_200">© 2024, MadFox. All rights reserved.</p>
             </div>
