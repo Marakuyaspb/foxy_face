@@ -4,9 +4,11 @@ import { InjectedConnector } from '@web3-react/injected-connector';
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
 import { ethers } from 'ethers';
 
+import { INFURA_RPC_URL } from './secrets'; 
+
 const injected = new InjectedConnector({ supportedChainIds: [1, 3, 4, 5, 42] });
 const walletConnect = new WalletConnectConnector({
-	rpc: { 1: 'https://mainnet.infura.io/v3/3b6324da1ca941a6986f2fb9d5cf1ddb' },
+	rpc: { 1: INFURA_RPC_URL },
 	qrcode: true,
 });
 

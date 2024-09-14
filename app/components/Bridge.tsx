@@ -57,6 +57,18 @@ const Bridge: React.FC = () => {
     };
 
 
+
+    const [fromValue, setfromValue] = useState('');
+    const handleFromChange = (event) => {
+      setfromValue(event.target.value);
+    };
+    const [toValue, settoValue] = useState('');
+    const handleToChange = (event) => {
+      settoValue(event.target.value);
+    };
+
+
+
     return (
       <div className='bridge'>
         <h1 className="text-xl pb-4">Bridge & Swap</h1>
@@ -168,10 +180,12 @@ const Bridge: React.FC = () => {
                             type="text"
                             placeholder="0.00"
                             className="block w-full rounded-md how_much ps-2  text-gray-900 placeholder:text-gray-500 "
+                            value={fromValue}
+                            onChange={handleFromChange}
                           />
                       </div>
                       <label htmlFor="price" className="we_200 block text-sm font-medium text-gray-900">
-                          ~ 10 USD
+                          {fromValue} USD
                       </label>
                     </div>
                   </div>
@@ -288,10 +302,12 @@ const Bridge: React.FC = () => {
                             type="text"
                             placeholder="0.00"
                             className="block w-full rounded-md how_much ps-2  text-gray-900 placeholder:text-gray-500 "
+                            value={toValue}
+                            onChange={handleToChange}
                           />
                       
                         <label htmlFor="price" className="we_200 block text-sm font-medium text-gray-900">
-                          ~ 10 USD
+                          {toValue} USD
                         </label>
                       </div>
                     </div>
@@ -407,10 +423,12 @@ const Bridge: React.FC = () => {
                           type="text"
                           placeholder="0.00"
                           className="block w-full rounded-md how_much ps-2  text-gray-900 placeholder:text-gray-500 "
+                          value={toValue}
+                            onChange={handleToChange}
                         />
                       </div>
                         <label htmlFor="price" className="we_200 block text-sm font-medium text-gray-900">
-                          ~ 10 USD
+                          {toValue} USD
                         </label>
                     </div>
                   </div>
@@ -523,10 +541,12 @@ const Bridge: React.FC = () => {
                             type="text"
                             placeholder="0.00"
                             className="block w-full rounded-md how_much ps-2  text-gray-900 placeholder:text-gray-500 "
+                            value={fromValue}
+                            onChange={handleFromChange}
                           />
                       </div>
                       <label htmlFor="price" className="we_200 block text-sm font-medium text-gray-900">
-                          ~ 10 USD
+                          {fromValue} USD
                       </label>
                     </div>
                 </div>
