@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from '@remix-run/react';
+
 import { Web3ReactProvider } from '@web3-react/core';
 import WalletConnectComponent from './WalletConnect';
 import { ethers } from 'ethers';
@@ -24,9 +26,11 @@ const Header= () => {
          <div className="wrap">
             <div className="px-4 py-3 d-flex justify-content-between">
 
-               <div>
-                  <h1 className="text-3xl">MadFox Bridge</h1>
-                  <p className="we_300">Smart way of token routing</p>
+               <div className=''>
+                  <Link to="/">
+                     <h1 className="gray_dark we_600 logo_text">MadFox Bridge</h1>
+                     <p className="gray_dark text_9 we_300">Smart way of token routing</p>
+                  </Link>
                </div>
 
                <div>

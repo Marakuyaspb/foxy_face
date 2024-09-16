@@ -16,6 +16,13 @@ footer{
 	background-color: #333;
 	color: #fff;
 }
+a{
+	text-decoration: none!important;
+}
+
+footer a:hover{
+	color: rgb(251, 251, 251);
+}
 
 label{
 	font-size: 1.1em;
@@ -54,6 +61,13 @@ label{
 
 /* COLORS */
 
+.gray_dark{
+	color: #333333!important;
+}
+.gray_dark_bg{
+	background-color: #333333;
+}
+
 .orange{
 	color: #FFA500;
 }
@@ -67,6 +81,8 @@ label{
 .orange_light_bg{
 	background-color:#FFFBDA;
 }
+
+
 
 
 /*  DESCTOP  */
@@ -164,10 +180,19 @@ label{
 	margin: .5em auto;
 }
 
+.logo_text{
+	font-size: 1.56em;
+	line-height: 1;
+	margin-bottom: 0.2em!important;
+}
 
+
+.text_9{
+	font-size: .9em;
+}
 
 .btn_swap{
-	background: rgb(255, 216, 194);
+	background: rgb(251, 251, 251);
 	/*border: 1px #f1f5f7 solid;*/
 	border-radius: 8px;
 	box-shadow: 1px 3px 3px 1px rgba(0,0,0,0.1);
