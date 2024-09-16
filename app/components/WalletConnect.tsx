@@ -6,7 +6,9 @@ import { ethers } from 'ethers';
 
 import { INFURA_RPC_URL } from './secrets'; 
 
-const injected = new InjectedConnector({ supportedChainIds: [1, 3, 4, 5, 42] });
+const injected = new InjectedConnector({
+	supportedChainIds: [1, 2, 3] 
+});
 const walletConnect = new WalletConnectConnector({
 	rpc: { 1: INFURA_RPC_URL },
 	qrcode: true,
@@ -14,7 +16,7 @@ const walletConnect = new WalletConnectConnector({
 
 
 const WalletConnectComponent: React.FC = () => {
-	const { activate, active, account } = useWeb3React();
+	const { account, active, activate, deactivate } = useWeb3React();
 
 	const connectInjected = async () => {
 		if (!window.ethereum) {
@@ -29,13 +31,6 @@ const WalletConnectComponent: React.FC = () => {
 		}
 	};
 
-	const connectWalletConnect = async () => {
-		try {
-			await activate(walletConnect);
-		} catch (error) {
-			console.error("Failed to connect with WalletConnect:", error);
-		}
-	};
 
 
     return (
@@ -44,8 +39,8 @@ const WalletConnectComponent: React.FC = () => {
 			<div id='metamask' className='card' onClick={connectInjected}>
 				<img src="/svg_icons/wallets/metamask.svg" alt="Wallet Icon" className=" "  />
 			</div>
-			<div className='card' onClick={connectWalletConnect}>
-				<img src="/svg_icons/wallets/w_connect.svg" alt="Wallet Icon" className=""  />
+			<div className='card'>
+				<img src="/svg_icons/wallets/w_connect.svg" alt="Wallet Icon" className="op_50"  />
 			</div>
 			<div className='card'>
 				<img src="/svg_icons/wallets/trust.svg" alt="Wallet Icon" className="op_50"  />
@@ -62,7 +57,7 @@ const WalletConnectComponent: React.FC = () => {
 			<div className='card'>
 				<img src="/svg_icons/wallets/rainbow.svg" alt="Wallet Icon" className="op_50"  />
 			</div>
-			{active && <div>Connected as: {account}</div>}
+			
 		</div>
 	);
 };

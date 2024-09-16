@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
                 </div>
 
             <div className='p-4'>
-                <p className="we_200">© 2024, MadFox. All rights reserved.</p>
+                <p className="we_200 text_8">© 2024, MadFox. All rights reserved.</p>
             </div>
         </footer>
     );
