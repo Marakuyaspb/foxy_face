@@ -3,26 +3,30 @@ import { ethers } from 'ethers';
 
 
 
-
 function WalletConnectComponent(){
 	const [userAccount, setUserAccount] = useState("");
 	const [userAccountShort, setUserAccountShort] = useState("");
 	const [balance, setBalance] = useState(0);
 
 	const onConnect = () => {
-		if (window.ethereum) {
-		  	window.ethereum
-			  	.request({method: 'eth_requestAccounts'})
-			  	.then((account) => {
-			  		const fullAccount = account[0];
-				setUserAccount(fullAccount);
-				setUserAccountShort("0x" + "..." + fullAccount.slice(-4)); 
-				getBalance(fullAccount);
-			  		const [isVisible, setIsVisible] = useState(false);
-			  	})
-		} else {
-			alert("Please install MetaMask!");
-		}
+		if (userAccount) {
+		setUserAccount("");
+		setUserAccountShort("");
+		setBalance(0);
+    	} else {
+			if (window.ethereum) {
+			  	window.ethereum
+				  	.request({method: 'eth_requestAccounts'})
+				  	.then((account) => {
+				  		const fullAccount = account[0];
+					setUserAccount(fullAccount);
+					setUserAccountShort("0x" + "..." + fullAccount.slice(-4)); 
+					getBalance(fullAccount);
+				  		const [isVisible, setIsVisible] = useState(false);
+				  	})
+			} else {
+				alert("Please install MetaMask!");
+			}}
 	};
 
 	const getBalance = (account) => {
@@ -38,17 +42,8 @@ function WalletConnectComponent(){
 		};
 
 
-
-   const showModal = () => {
-      setIsVisible(true);
-   };
-   const hideModal = () => {
-      setIsVisible(false);
-   };
-
-
     return (
-    	<div className='d-flex' onClick={ showModal }>
+    	<div className='d-flex'>
 
             <div className='pt-4 pe-3 text_9 gray_dark' id='address'>
 				{userAccount ? (
@@ -69,9 +64,7 @@ function WalletConnectComponent(){
                {userAccount ? 'Disconnect' : 'Connect wallet'}
                </button>
             </div>
-        </div>
-
-				
+        </div>				
 	);
 }
 
