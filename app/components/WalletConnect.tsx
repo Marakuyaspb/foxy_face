@@ -1,65 +1,78 @@
-import React from 'react';
-import { useWeb3React } from '@web3-react/core';
-import { InjectedConnector } from '@web3-react/injected-connector';
-import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
+import React, { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 
-import { INFURA_RPC_URL } from './secrets'; 
-
-const injected = new InjectedConnector({
-	supportedChainIds: [1, 2, 3] 
-});
-const walletConnect = new WalletConnectConnector({
-	rpc: { 1: INFURA_RPC_URL },
-	qrcode: true,
-});
 
 
-const WalletConnectComponent: React.FC = () => {
-	const { account, active, activate, deactivate } = useWeb3React();
 
-	const connectInjected = async () => {
-		if (!window.ethereum) {
-		  alert("Please install MetaMask!");
-		  return;
-		}
+function WalletConnectComponent(){
+	const [userAccount, setUserAccount] = useState("");
+	const [userAccountShort, setUserAccountShort] = useState("");
+	const [balance, setBalance] = useState(0);
 
-		try {
-			await activate(injected);
-		} catch (error) {
-			console.error("Failed to connect with MetaMask:", error);
+	const onConnect = () => {
+		if (window.ethereum) {
+		  	window.ethereum
+			  	.request({method: 'eth_requestAccounts'})
+			  	.then((account) => {
+			  		const fullAccount = account[0];
+				setUserAccount(fullAccount);
+				setUserAccountShort("0x" + "..." + fullAccount.slice(-4)); 
+				getBalance(fullAccount);
+			  		const [isVisible, setIsVisible] = useState(false);
+			  	})
+		} else {
+			alert("Please install MetaMask!");
 		}
 	};
 
+	const getBalance = (account) => {
+		window.ethereum.request({
+			method: "eth_getBalance", 
+			params: [account, "latest"],
+		}).then((balance) => { 
+			console.log(balance);
+			setBalance(ethers.utils.formatEther(balance));
+		}).catch((error) => {
+				console.error("Error fetching balance:", error);
+			});
+		};
+
+
+
+   const showModal = () => {
+      setIsVisible(true);
+   };
+   const hideModal = () => {
+      setIsVisible(false);
+   };
 
 
     return (
-		<div className='w_container pt-5'>
-			
-			<div id='metamask' className='card' onClick={connectInjected}>
-				<img src="/svg_icons/wallets/metamask.svg" alt="Wallet Icon" className=" "  />
-			</div>
-			<div className='card'>
-				<img src="/svg_icons/wallets/w_connect.svg" alt="Wallet Icon" className="op_50"  />
-			</div>
-			<div className='card'>
-				<img src="/svg_icons/wallets/trust.svg" alt="Wallet Icon" className="op_50"  />
-			</div>
-			<div className='card'>
-				<img src="/svg_icons/wallets/coinbase.svg" alt="Wallet Icon" className="op_50" />
-			</div>
-			<div className='card'>
-				<img src="/svg_icons/wallets/okx.svg" alt="Wallet Icon" className="op_50" />
-			</div>
-			<div className='card'>
-				<img src="/svg_icons/wallets/imtoken.svg" alt="Wallet Icon" className="op_50"  />
-			</div>
-			<div className='card'>
-				<img src="/svg_icons/wallets/rainbow.svg" alt="Wallet Icon" className="op_50"  />
-			</div>
-			
-		</div>
+    	<div className='d-flex' onClick={ showModal }>
+
+            <div className='pt-4 pe-3 text_9 gray_dark' id='address'>
+				{userAccount ? (
+					<div className=''>
+	                	<span сlassName=''>{userAccountShort} | Balance: {balance} ETH</span>
+                	</div>
+				) : (
+                	<span сlassName=''>Wallet not connected</span>
+               )}
+           	</div>
+            
+            <div>
+               <button 
+                  id='show' 
+                  className='we_300 btn_swap' 
+                  onClick={onConnect}
+               >
+               {userAccount ? 'Disconnect' : 'Connect wallet'}
+               </button>
+            </div>
+        </div>
+
+				
 	);
-};
+}
 
 export default WalletConnectComponent;
