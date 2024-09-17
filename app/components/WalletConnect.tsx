@@ -7,27 +7,29 @@ function WalletConnectComponent(){
 	const [userAccount, setUserAccount] = useState("");
 	const [userAccountShort, setUserAccountShort] = useState("");
 	const [balance, setBalance] = useState(0);
+	const [isVisible, setIsVisible] = useState(false);
 
-	const onConnect = () => {
+	const onConnect = async () => {
 		if (userAccount) {
 		setUserAccount("");
 		setUserAccountShort("");
 		setBalance(0);
     	} else {
 			if (window.ethereum) {
-			  	window.ethereum
-				  	.request({method: 'eth_requestAccounts'})
-				  	.then((account) => {
-				  		const fullAccount = account[0];
+				try {
+					const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+					const fullAccount = accounts[0];
 					setUserAccount(fullAccount);
 					setUserAccountShort("0x" + "..." + fullAccount.slice(-4)); 
-					getBalance(fullAccount);
-				  		const [isVisible, setIsVisible] = useState(false);
-				  	})
+					getBalance(fullAccount); 
+				} catch (error) {
+					console.error("Error connecting:", error);
+				}
 			} else {
 				alert("Please install MetaMask!");
-			}}
-	};
+			}
+		}
+  };
 
 	const getBalance = (account) => {
 		window.ethereum.request({
@@ -41,10 +43,18 @@ function WalletConnectComponent(){
 			});
 		};
 
+	/* About modal window */
+	const showModal = () => {
+		setIsVisible(true);
+	};
+	const hideModal = () => {
+		setIsVisible(false);
+	};
+
 
     return (
-    	<div className='d-flex'>
-
+    	<div>
+    		<div className='d-flex'>
             <div className='pt-4 pe-3 text_9 gray_dark' id='address'>
 				{userAccount ? (
 					<div className=''>
@@ -58,13 +68,55 @@ function WalletConnectComponent(){
             <div>
                <button 
                   id='show' 
-                  className='we_300 btn_swap' 
+                  className={userAccount ? 'hide' : 'block we_300'}
+                  onClick={showModal}
+               >
+               {userAccount ? 'Disconnect' : 'Connect wallet'}
+               </button>
+               <button 
+                  id='disconnect' 
+                  className={userAccount ? 'block' : 'hide we_300'}  
                   onClick={onConnect}
                >
                {userAccount ? 'Disconnect' : 'Connect wallet'}
                </button>
             </div>
-        </div>				
+        	</div>
+
+        	<div className={`${isVisible ? 'block' : 'hidden'} modal_full`} id="w">
+			
+	            <div className='p-4 modal_container'>
+	               <span id='hide' className='close' onClick={hideModal}>&times;</span>
+	               <center><h2 className='we_300'>Connect Your Wallet</h2></center>
+
+		            <div className='w_container pt-5'> 
+		               <div id='metamask' className='card' onClick={onConnect}>
+		                  <img src="/svg_icons/wallets/metamask.svg" alt="Wallet Icon" className=" "  />
+		               </div>
+		               <div className='card'>
+								<img src="/svg_icons/wallets/w_connect.svg" alt="Wallet Icon" className="op_50"  />
+							</div>
+							<div className='card'>
+								<img src="/svg_icons/wallets/trust.svg" alt="Wallet Icon" className="op_50"  />
+							</div>
+							<div className='card'>
+								<img src="/svg_icons/wallets/coinbase.svg" alt="Wallet Icon" className="op_50" />
+							</div>
+							<div className='card'>
+								<img src="/svg_icons/wallets/okx.svg" alt="Wallet Icon" className="op_50" />
+							</div>
+							<div className='card'>
+								<img src="/svg_icons/wallets/imtoken.svg" alt="Wallet Icon" className="op_50"  />
+							</div>
+							<div className='card'>
+								<img src="/svg_icons/wallets/rainbow.svg" alt="Wallet Icon" className="op_50"  />
+							</div>
+		           	</div>
+	         	</div>
+	         	
+      	</div>
+
+		</div>
 	);
 }
 

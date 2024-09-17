@@ -16,13 +16,27 @@ footer{
 	background-color: #333;
 	color: #fff;
 }
-a{
-	text-decoration: none!important;
-}
 
 footer a:hover{
 	color: rgb(251, 251, 251);
 }
+
+a{
+	text-decoration: none!important;
+}
+
+button {
+	background: rgb(251, 251, 251);
+	border: 1px #f1f5f7 solid;
+	border-radius: 8px!important;
+	box-shadow: 1px 3px 3px 1px rgba(0,0,0,0.1);
+	min-width: 7em;
+	margin: 1em auto .5em auto!important;
+	padding: .3em .8em;
+}
+
+
+
 
 label{
 	font-size: 1.1em;
@@ -76,10 +90,10 @@ label{
 }
 
 .orange_light{
-	color: #FFFBDA;
+	color: #FFFBDA!important;
 }
 .orange_light_bg{
-	background-color:#FFFBDA;
+	background-color:#FFFBDA!important;
 }
 
 
@@ -197,15 +211,6 @@ label{
 	font-size: .7em!important;
 }
 
-.btn_swap{
-	background: rgb(251, 251, 251);
-	/*border: 1px #f1f5f7 solid;*/
-	border-radius: 8px;
-	box-shadow: 1px 3px 3px 1px rgba(0,0,0,0.1);
-	min-width: 7em;
-	margin: 1em auto .5em auto!important;
-	padding: .3em .8em;
-}
 
 
 
@@ -222,7 +227,6 @@ label{
   overflow: auto;
   background-color: rgba(111, 86, 65, 0.5)!important;
 }
-
 
 
 #w {
