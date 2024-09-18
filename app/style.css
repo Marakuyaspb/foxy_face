@@ -25,7 +25,7 @@ a{
 	text-decoration: none!important;
 }
 
-button {
+.button_light {
 	background: rgb(251, 251, 251);
 	border: 1px #f1f5f7 solid;
 	border-radius: 8px!important;
@@ -124,6 +124,7 @@ label{
 
 	.close {
 	  color: #333333;
+	  cursor: pointer;
 	  position: absolute;
 	  top: 45px;
 	  right: 35px;

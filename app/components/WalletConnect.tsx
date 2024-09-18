@@ -21,7 +21,8 @@ function WalletConnectComponent(){
 					const fullAccount = accounts[0];
 					setUserAccount(fullAccount);
 					setUserAccountShort("0x" + "..." + fullAccount.slice(-4)); 
-					getBalance(fullAccount); 
+					getBalance(fullAccount);
+					hideModal();
 				} catch (error) {
 					console.error("Error connecting:", error);
 				}
@@ -66,16 +67,15 @@ function WalletConnectComponent(){
            	</div>
             
             <div>
-               <button 
-                  id='show' 
-                  className={userAccount ? 'hide' : 'block we_300'}
+               <button id='show' 
+                  className={userAccount ? 'hide button_light' : 'block button_light we_300'  }
                   onClick={showModal}
                >
                {userAccount ? 'Disconnect' : 'Connect wallet'}
                </button>
-               <button 
-                  id='disconnect' 
-                  className={userAccount ? 'block' : 'hide we_300'}  
+
+               <button id='disconnect' 
+                  className={ userAccount ? 'block button_light' : 'hide button_light we_300' }  
                   onClick={onConnect}
                >
                {userAccount ? 'Disconnect' : 'Connect wallet'}
