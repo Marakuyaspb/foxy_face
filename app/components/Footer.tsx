@@ -6,7 +6,8 @@ const Footer: React.FC = () => {
         <footer className='fixed-bottom'>
             <div class="d-flex justify-content-center">
                 <Link className='p-3 we_300 orange_light' to="/">Bridge</Link>
-                <Link className='p-3 we_300 orange_light' to="/roadmap">Roadmap</Link>
+                <Link className='p-3 we_300 orange_light' to="/rates">Rates</Link>
+                {/*<Link className='p-3 we_300 orange_light' to="/roadmap">Roadmap</Link>*/}
                 <Link className='p-3 we_300 orange_light' to="/about">About</Link>
                 </div>
 
